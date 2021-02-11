@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal-2</title>
+</head>
+<body>
+
+  <h2>DERET FIBONACI</h2>
+  Masukan angka: <input type="text" id="angka"><br><br>
+  <button onclick="tampilkanHasil()">
+    SHOW
+  </button>
+  <button>
+    GANJIL
+  </button>
+  <button>
+    GENAP
+  </button>
+
+  <h2>RESULT</h2>
+  <div id="result">
+
+  </div>
+
+  <script>
+
+    const fibonaci = (numb) => {
+      if(numb === 1){
+        return [0, 1]
+      } else {
+        var s = fibonaci(numb - 1);
+        s.push(s[s.length - 1] + s[s.length - 2]);
+        return s;
+      }
+    }
+
+    const tampilkanHasil = () => {
+      angka = document.getElementById('angka').value
+      let res
+      res = fibonaci(angka)
+      document.getElementById('result').innerHTML= res
+    }
+
+
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal-3</title>
+  <style>
+     tr,td,table,th{
+       border-collapse: collapse;
+       border:1px solid black;
+       padding:5px
+     }
+  </style>
+</head>
+<body>
+  <h2>FORM USER</h2>
+  <input type="text" placeholder="username" id="nama">
+  <input type="text" placeholder="email" id="email"> role
+  <select id="role"> 
+    <option value="User">User</option>
+    <option value="Admin">Admin</option>
+  </select> <br><br>
+  <button onclick="tampilkanHasil()">
+    ADD USER
+  </button><br><br>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="result">
+
+      </tbody>
+    </table>
+
+  <script>
+  class user {
+    constructor(_userName, _email, _role){
+      this.username = _userName
+      this.email = _email
+      this.role = _role
+    }
+  }
+
+  let listUSer =[
+    new user('Ommi', 'karunia@gmail.com', 'user'),
+    new user('Putra', 'omi@gmail.com', 'user')
+  ] 
+
+  let indexEdit = -1
+  let indexDelete = -1
+  
+  const printData = () => {
+    var result = listUSer.map((val, index) => {
+      if(indexDelete == index){
+        return `<tr>
+          <td>${index+1}</td>
+          <td>${val.username}</td>
+          <td>${val.email}</td>
+          <td>${val.role}</td>
+          <td>
+            <input type="button" value="Delete" onclick="onDeleteClick(${index})">
+            <input type="button" value="Edit" onclick="onEditClick(${index})">
+          </th>
+        </tr>`
+
+      } else if (indexEdit == index){
+        return `<tr>
+          <td>${index+1}</td>
+          <td><input type="text" value=${val.username} placeholder="username" </td>
+          <td><input type="text" value=${val.email} placeholder="email" </td>
+          <td>${val.role}</td>
+          <td>
+            <input type="button" value="Delete" onclick="onDeleteClick(${index})">
+            <input type="button" value="Edit" onclick="onEditClick(${index})">
+          </th>
+        </tr>`
+      }
+      return `<tr>
+        <td>${index+1}</td>
+        <td>${val.username}</td>
+        <td>${val.email}</td>
+        <td>${val.role}</td>
+        <td>
+          <input type="button" value="Delete" onclick="onDeleteClick(${index})">
+          <input type="button" value="Edit" onclick="onEditClick(${index})">
+        </th>
+      </tr>`
+    })
+    document.getElementById('result').innerHTML= result.join('')
+
+  }
+  printData()
+
+  const tampilkanHasil = () => {
+    let nama = document.getElementById('nama').value
+    let email = document.getElementById('email').value
+    let role = document.getElementById('role').value
+
+    console.log(nama, email)
+
+    let newUSer = new user(`${nama}`, `${email}`, `${role}`)
+    listUSer.push(newUSer)
+    printData()
+  }      
+
+  const onDeleteClick = (index) => {
+    indexDelete = index
+    printData()
+  }
+
+  const onEditClick = (index) => {
+    indexEdit = index
+    printData()
+  }
+
+  </script>
+  
+</body>
+</html>

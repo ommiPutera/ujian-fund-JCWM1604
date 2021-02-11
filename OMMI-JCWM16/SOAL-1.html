@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal-1</title>
+</head>
+<body>
+  
+  <h2>PATTERN</h2>
+  <input type="text" placeholder="masukan angka" id="angka"><br><br>
+
+  <button id="ganjil" onclick="tampilkanHasilGanjil()">
+    GANJIL
+  </button>
+  <button id="hurufGanjil" onclick="tampilkanHasil()">
+    HURUF
+  </button><br><br>
+  <h2>RESULT:</h2>
+  <div id="hasil">
+    
+
+  </div>
+
+  <script>
+
+    const angkaGanjil = (numb) => {
+      let res = ''
+      let deretAngkaGanjil = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      
+      for(let i = 0; i<numb; i++){
+        for(let j = 0; j<=i; j++){
+          if(deretAngkaGanjil[j] % 2 == 0){
+            res+=`${deretAngkaGanjil}`
+          }
+        }
+        res+="<br>"
+      }
+      console.log(res)
+      return res
+    }
+
+
+    const tampilkanHasilGanjil = () => {
+      let angka = document.getElementById('angka').value
+
+      var result
+      if(angka <= 4){
+        result = angkaGanjil(angka)
+
+      }
+      
+      document.getElementById('hasil').innerHTML=result
+    }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
